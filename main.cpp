@@ -18,29 +18,27 @@ bool checkInclusion(string s1, string s2){
             l = h;
             l++, h++;
         }
+        else if(cur_m[s2[h]] < m[s2[h]]){
+            cur_m[s2[h]]++;
+            cur_count--;
+            h++;
+        }
         else{
-            if(cur_m[s2[h]] < m[s2[h]]){
-                cur_m[s2[h]]++;
-                cur_count--;
-                h++;
-            }
-            else{
-                while(true){
-                    if(s2[l] != s2[h]){
-                        cur_m[s2[l]]--;
-                        cur_count ++;
-                        l++;
-                    }
-                    else{
-                        cur_m[s2[l]]--;
-                        cur_count ++;
-                        l++;
-                        break;
-                    }
+            while(true){
+                if(s2[l] != s2[h]){
+                    cur_m[s2[l]]--;
+                    cur_count ++;
+                    l++;
+                }
+                else{
+                    cur_m[s2[l]]--;
+                    cur_count ++;
+                    l++;
+                    break;
                 }
             }
-            if(cur_count == 0) return true;
         }
+        if(cur_count == 0) return true;
     }
     return false;
 }
